@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+
+pandas
+numpy
+scikit-learn
+
+xgboost
+lightgbm
+
+pydantic
+python-dotenv
+jwt
+
+python-multipart
