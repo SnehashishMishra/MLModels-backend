@@ -24,7 +24,7 @@ from fastapi.responses import FileResponse
 
 from pydantic import BaseModel
 
-from sklearn.datasets import load_breast_cancer
+from sklearn.datasets import load_wine
 from sklearn.preprocessing import LabelEncoder
 
 from train_models import train_models
@@ -53,15 +53,15 @@ ADMIN_API_KEY = os.getenv("ADMIN_API_KEY")
 ROWS_PER_PAGE = 50
 
 # ------------------------------------------------------
-# Default dataset (Breast Cancer)
+# Default dataset (Wine Quality)
 # ------------------------------------------------------
 
-data = load_breast_cancer()
+data = load_wine()
 X_DEFAULT = data.data
 y_DEFAULT = data.target
 feature_names = list(data.feature_names)
 
-DEFAULT_DATASET_NAME = "Breast Cancer (Default)"
+DEFAULT_DATASET_NAME = "Wine Quality (Default)"
 
 # ------------------------------------------------------
 # FastAPI app setup

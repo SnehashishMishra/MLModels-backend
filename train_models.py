@@ -1,3 +1,5 @@
+import numpy as np
+
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
@@ -18,17 +20,13 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
 from sklearn.neural_network import MLPClassifier
 
+
 def train_models(X, y):
 
     models = {
         "Logistic Regression": Pipeline([
             ("scaler", StandardScaler()),
             ("model", LogisticRegression(max_iter=1000))
-        ]),
-
-        "Linear Regression (as classifier)": Pipeline([
-            ("scaler", StandardScaler()),
-            ("model", LinearRegression())
         ]),
 
         "Decision Tree": DecisionTreeClassifier(random_state=42),
@@ -61,6 +59,8 @@ def train_models(X, y):
         ]),
     }
 
+    multi_class = len(np.unique(y)) > 2
+
     X_train, X_test, y_train, y_test = train_test_split(
         X,
         y,
@@ -82,41 +82,44 @@ def train_models(X, y):
         model.fit(X_train, y_train)
 
         # Predictions
-        if name == "Linear Regression (as classifier)":
-            y_pred = (model.predict(X_test) >= 0.5).astype(int)
-            y_prob = None
-        else:
-            y_pred = model.predict(X_test)
-            y_prob = (
-                model.predict_proba(X_test)[:, 1]
-                if hasattr(model, "predict_proba")
-                else None
-            )
+        y_pred = model.predict(X_test)
 
-        # Metrics
+        # Probabilities (if available)
+        y_prob = None
+        if hasattr(model, "predict_proba"):
+            y_prob = model.predict_proba(X_test)
+
+        # ========== METRICS ==========
         acc = accuracy_score(y_test, y_pred)
-        prec = precision_score(y_test, y_pred)
-        rec = recall_score(y_test, y_pred)
-        f1 = f1_score(y_test, y_pred)
-        auc = roc_auc_score(y_test, y_prob) if y_prob is not None else None
 
+        prec = precision_score(y_test, y_pred, average="weighted", zero_division=0)
+        rec = recall_score(y_test, y_pred, average="weighted", zero_division=0)
+        f1 = f1_score(y_test, y_pred, average="weighted", zero_division=0)
+
+        # SAFE ROC AUC FOR BOTH BINARY + MULTICLASS
+        roc = None
+        try:
+            if y_prob is not None:
+                if multi_class:
+                    roc = roc_auc_score(y_test, y_prob, multi_class="ovr", average="weighted")
+                else:
+                    roc = roc_auc_score(y_test, y_prob[:, 1])
+        except:
+            roc = None
+
+        # Confusion Matrix (for ALL classes)
         cm = confusion_matrix(y_test, y_pred)
-
-        cm_dict = {
-            "tn": int(cm[0][0]),
-            "fp": int(cm[0][1]),
-            "fn": int(cm[1][0]),
-            "tp": int(cm[1][1]),
-            "matrix": cm.tolist(),
-        }
 
         MODEL_METRICS[name] = {
             "accuracy": float(acc),
             "precision": float(prec),
             "recall": float(rec),
             "f1": float(f1),
-            "roc_auc": float(auc) if auc is not None else None,
-            "confusion_matrix": cm_dict,
+            "roc_auc": float(roc) if roc is not None else None,
+            "confusion_matrix": {
+                "matrix": cm.tolist(),
+                "classes": len(cm)
+            },
         }
 
         MODELS[name] = model
@@ -124,6 +127,6 @@ def train_models(X, y):
         if acc > best_acc:
             best_acc = acc
             best_name = name
-            best_confusion = cm_dict
+            best_confusion = cm.tolist()
 
     return MODELS, MODEL_METRICS, best_name, best_confusion

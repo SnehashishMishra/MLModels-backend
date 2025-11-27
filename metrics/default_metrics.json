@@ -1,224 +1,212 @@
 {
-    "best_model": "Logistic Regression",
+    "best_model": "Random Forest",
     "metrics": {
         "Logistic Regression": {
-            "accuracy": 0.9824561403508771,
-            "precision": 0.9861111111111112,
-            "recall": 0.9861111111111112,
-            "f1": 0.9861111111111112,
-            "roc_auc": 0.9953703703703703,
+            "accuracy": 0.9722222222222222,
+            "precision": 0.974074074074074,
+            "recall": 0.9722222222222222,
+            "f1": 0.9719701552732407,
+            "roc_auc": 1.0,
             "confusion_matrix": {
-                "tn": 41,
-                "fp": 1,
-                "fn": 1,
-                "tp": 71,
                 "matrix": [
                     [
-                        41,
-                        1
+                        12,
+                        0,
+                        0
                     ],
                     [
-                        1,
-                        71
-                    ]
-                ]
-            }
-        },
-        "Linear Regression (as classifier)": {
-            "accuracy": 0.956140350877193,
-            "precision": 0.9466666666666667,
-            "recall": 0.9861111111111112,
-            "f1": 0.9659863945578231,
-            "roc_auc": null,
-            "confusion_matrix": {
-                "tn": 38,
-                "fp": 4,
-                "fn": 1,
-                "tp": 71,
-                "matrix": [
-                    [
-                        38,
-                        4
+                        0,
+                        14,
+                        0
                     ],
                     [
+                        0,
                         1,
-                        71
+                        9
                     ]
-                ]
+                ],
+                "classes": 3
             }
         },
         "Decision Tree": {
-            "accuracy": 0.9122807017543859,
-            "precision": 0.9558823529411765,
-            "recall": 0.9027777777777778,
-            "f1": 0.9285714285714286,
-            "roc_auc": 0.9156746031746031,
+            "accuracy": 0.9444444444444444,
+            "precision": 0.9513888888888888,
+            "recall": 0.9444444444444444,
+            "f1": 0.9449614374099499,
+            "roc_auc": 0.9545454545454545,
             "confusion_matrix": {
-                "tn": 39,
-                "fp": 3,
-                "fn": 7,
-                "tp": 65,
                 "matrix": [
                     [
-                        39,
-                        3
+                        11,
+                        1,
+                        0
                     ],
                     [
-                        7,
-                        65
+                        0,
+                        14,
+                        0
+                    ],
+                    [
+                        0,
+                        1,
+                        9
                     ]
-                ]
+                ],
+                "classes": 3
             }
         },
         "k-NN": {
-            "accuracy": 0.956140350877193,
-            "precision": 0.958904109589041,
+            "accuracy": 0.9722222222222222,
+            "precision": 0.9747474747474748,
             "recall": 0.9722222222222222,
-            "f1": 0.9655172413793104,
-            "roc_auc": 0.9788359788359788,
+            "f1": 0.9723691945914168,
+            "roc_auc": 0.9988344988344989,
             "confusion_matrix": {
-                "tn": 39,
-                "fp": 3,
-                "fn": 2,
-                "tp": 70,
                 "matrix": [
                     [
-                        39,
-                        3
+                        12,
+                        0,
+                        0
                     ],
                     [
-                        2,
-                        70
+                        0,
+                        13,
+                        1
+                    ],
+                    [
+                        0,
+                        0,
+                        10
                     ]
-                ]
+                ],
+                "classes": 3
             }
         },
         "Naive Bayes": {
-            "accuracy": 0.9385964912280702,
-            "precision": 0.9452054794520548,
-            "recall": 0.9583333333333334,
-            "f1": 0.9517241379310345,
-            "roc_auc": 0.9877645502645502,
-            "confusion_matrix": {
-                "tn": 38,
-                "fp": 4,
-                "fn": 3,
-                "tp": 69,
-                "matrix": [
-                    [
-                        38,
-                        4
-                    ],
-                    [
-                        3,
-                        69
-                    ]
-                ]
-            }
-        },
-        "Random Forest": {
-            "accuracy": 0.956140350877193,
-            "precision": 0.958904109589041,
+            "accuracy": 0.9722222222222222,
+            "precision": 0.9743589743589745,
             "recall": 0.9722222222222222,
-            "f1": 0.9655172413793104,
-            "roc_auc": 0.9930555555555556,
+            "f1": 0.9722633744855966,
+            "roc_auc": 1.0,
             "confusion_matrix": {
-                "tn": 39,
-                "fp": 3,
-                "fn": 2,
-                "tp": 70,
                 "matrix": [
                     [
-                        39,
-                        3
-                    ],
-                    [
-                        2,
-                        70
-                    ]
-                ]
-            }
-        },
-        "SVM (RBF)": {
-            "accuracy": 0.9824561403508771,
-            "precision": 0.9861111111111112,
-            "recall": 0.9861111111111112,
-            "f1": 0.9861111111111112,
-            "roc_auc": 0.9950396825396826,
-            "confusion_matrix": {
-                "tn": 41,
-                "fp": 1,
-                "fn": 1,
-                "tp": 71,
-                "matrix": [
-                    [
-                        41,
-                        1
+                        12,
+                        0,
+                        0
                     ],
                     [
                         1,
-                        71
+                        13,
+                        0
+                    ],
+                    [
+                        0,
+                        0,
+                        10
                     ]
-                ]
+                ],
+                "classes": 3
+            }
+        },
+        "Random Forest": {
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "roc_auc": 1.0,
+            "confusion_matrix": {
+                "matrix": [
+                    [
+                        12,
+                        0,
+                        0
+                    ],
+                    [
+                        0,
+                        14,
+                        0
+                    ],
+                    [
+                        0,
+                        0,
+                        10
+                    ]
+                ],
+                "classes": 3
+            }
+        },
+        "SVM (RBF)": {
+            "accuracy": 0.9722222222222222,
+            "precision": 0.974074074074074,
+            "recall": 0.9722222222222222,
+            "f1": 0.9719701552732407,
+            "roc_auc": 1.0,
+            "confusion_matrix": {
+                "matrix": [
+                    [
+                        12,
+                        0,
+                        0
+                    ],
+                    [
+                        0,
+                        14,
+                        0
+                    ],
+                    [
+                        0,
+                        1,
+                        9
+                    ]
+                ],
+                "classes": 3
             }
         },
         "Neural Net (MLP)": {
-            "accuracy": 0.9649122807017544,
-            "precision": 0.9857142857142858,
-            "recall": 0.9583333333333334,
-            "f1": 0.971830985915493,
-            "roc_auc": 0.9937169312169312,
+            "accuracy": 0.9722222222222222,
+            "precision": 0.974074074074074,
+            "recall": 0.9722222222222222,
+            "f1": 0.9719701552732407,
+            "roc_auc": 1.0,
             "confusion_matrix": {
-                "tn": 41,
-                "fp": 1,
-                "fn": 3,
-                "tp": 69,
                 "matrix": [
                     [
-                        41,
-                        1
+                        12,
+                        0,
+                        0
                     ],
                     [
-                        3,
-                        69
+                        0,
+                        14,
+                        0
+                    ],
+                    [
+                        0,
+                        1,
+                        9
                     ]
-                ]
+                ],
+                "classes": 3
             }
         }
     },
-    "dataset_name": "Breast Cancer (Default)",
-    "rows": 569,
+    "dataset_name": "Wine Quality (Default)",
+    "rows": 178,
     "columns": [
-        "mean radius",
-        "mean texture",
-        "mean perimeter",
-        "mean area",
-        "mean smoothness",
-        "mean compactness",
-        "mean concavity",
-        "mean concave points",
-        "mean symmetry",
-        "mean fractal dimension",
-        "radius error",
-        "texture error",
-        "perimeter error",
-        "area error",
-        "smoothness error",
-        "compactness error",
-        "concavity error",
-        "concave points error",
-        "symmetry error",
-        "fractal dimension error",
-        "worst radius",
-        "worst texture",
-        "worst perimeter",
-        "worst area",
-        "worst smoothness",
-        "worst compactness",
-        "worst concavity",
-        "worst concave points",
-        "worst symmetry",
-        "worst fractal dimension",
+        "alcohol",
+        "malic_acid",
+        "ash",
+        "alcalinity_of_ash",
+        "magnesium",
+        "total_phenols",
+        "flavanoids",
+        "nonflavanoid_phenols",
+        "proanthocyanins",
+        "color_intensity",
+        "hue",
+        "od280/od315_of_diluted_wines",
+        "proline",
         "target"
     ],
     "owner_id": null,
